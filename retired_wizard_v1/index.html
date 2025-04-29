@@ -1,0 +1,558 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HVAC Estimate Portal</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #f4f4f4; }
+    nav { background: #fff; padding: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 20px; }
+    nav button { padding: 8px 16px; background: #28a745; color: #fff; border: none; border-radius: 4px; margin: 0 5px; cursor: pointer; }
+    nav button:hover { background: #218838; }
+    main { max-width: 1200px; margin: 0 auto; }
+    table { width: 100%; border-collapse: collapse; background: #fff; }
+    th, td { padding: 10px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f8f9fa; }
+    button { padding: 6px 12px; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
+    .blue-btn { background: #007bff; }
+    .blue-btn:hover { background: #0056b3; }
+    .red-btn { background: #dc3545; }
+    .red-btn:hover { background: #c82333; }
+    .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center; }
+    .modal-content { background: #fff; padding: 20px; border-radius: 8px; max-width: 600px; width: 100%; max-height: 80vh; overflow-y: auto; }
+    label { display: block; margin-bottom: 5px; }
+    input, select, textarea { width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 4px; }
+    .material-order { background: #fff; padding: 20px; border-radius: 8px; }
+    .pricebook-item { margin-bottom: 10px; padding: 10px; border: 1px solid #ddd; border-radius: 4px; display: flex; align-items: center; }
+    .pricebook-item select { width: 60%; margin-right: 10px; }
+    .pricebook-item input { width: 20%; margin-right: 10px; }
+    .pricebook-item button { width: 10%; }
+    .image-upload-btn { 
+      display: inline-block; 
+      padding: 8px 16px; 
+      background: #007bff; 
+      color: #fff; 
+      border-radius: 4px; 
+      cursor: pointer; 
+      text-align: center; 
+    }
+    .image-upload-btn:hover { background: #0056b3; }
+    .image-preview { 
+      max-width: 100%; 
+      max-height: 200px; 
+      margin-top: 10px; 
+      display: none; 
+    }
+    .image-preview.show { display: block; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <script src="https://unpkg.com/papaparse@latest/papaparse.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+  <script src="/js/scripts.js"></script>
+</head>
+<body x-data="estimateApp()" x-init="init(); initNav()">
+  <!-- Navigation Placeholder -->
+  <div id="nav-placeholder"></div>
+
+  <main>
+    <!-- Estimate Manager Section -->
+    <template x-if="page === 'estimate'">
+      <div>
+        <h2>Estimate Manager</h2>
+        <div>
+          <h3>Estimates (Last 3 Months)</h3>
+          <div style="text-align: right; margin-bottom: 10px;">
+            <button @click="refreshEstimates" class="blue-btn">Refresh from Housecall Pro</button>
+          </div>
+          <div style="overflow-x: auto;">
+            <table>
+              <thead>
+                <tr>
+                  <th>Estimate ID</th>
+                  <th>Customer</th>
+                  <th>Address</th>
+                  <th>Status</th>
+                  <th>Customer File</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <template x-for="estimate in estimates" :key="estimate.estimate_id">
+                  <tr>
+                    <td x-text="estimate.estimate_id || 'N/A'"></td>
+                    <td x-text="estimate.customerName ? estimate.customerName.replace('\n', ' ') : 'N/A'"></td>
+                    <td>
+                      <span x-text="estimate.siteAddress ? JSON.parse(estimate.siteAddress).street + (JSON.parse(estimate.siteAddress).street_line_2 ? ' ' + JSON.parse(estimate.siteAddress).street_line_2 : '') + ', ' + JSON.parse(estimate.siteAddress).city + ', ' + JSON.parse(estimate.siteAddress).state + ' ' + JSON.parse(estimate.siteAddress).zip : 'N/A'"></span>
+                    </td>
+                    <td x-text="estimate.status || 'N/A'"></td>
+                    <td><span style="color: #6c757d; font-style: italic;">Log in to Housecall Pro to view customer details</span></td>
+                    <td>
+                      <button @click="openEditModal(estimate)" class="blue-btn">Wizard</button>
+                      <button @click="deleteEstimate(estimate.estimate_id)" class="red-btn" x-bind:class="{ 'opacity-50 cursor-not-allowed': !estimate.estimate_id }">Delete</button>
+                    </td>
+                  </tr>
+                </template>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <!-- Edit Estimate Modal -->
+    <template x-if="showEditModal">
+      <div class="modal">
+        <div class="modal-content">
+          <h3>Consultation: <span x-text="editForm.estimate_id"></span></h3>
+          <div style="margin-bottom: 20px;">
+            <!-- Step 1: Homeowner Consultation -->
+            <template x-if="editStep === 1">
+              <div>
+                <h4 style="font-size: 1.2em; margin-bottom: 10px;">Step 1: Homeowner Consultation</h4>
+                <label>
+                  <span>Purpose of Visit (Select all that apply)</span>
+                  <div style="margin-top: 5px;">
+                    <template x-for="option in formOptions.purposeOfVisit" :key="option.value">
+                      <label style="display: block;">
+                        <input type="checkbox" x-model="editForm.purposeOfVisit" :value="option.value" style="margin-right: 5px;" @input="autoSave">
+                        <span x-text="option.label"></span>
+                      </label>
+                    </template>
+                  </div>
+                </label>
+                <template x-if="editForm.purposeOfVisit.includes('other')">
+                  <label>
+                    <span>Other Purpose (Specify)</span>
+                    <input type="text" x-model="editForm.otherPurpose" @input="autoSave">
+                  </label>
+                </template>
+                <label>
+                  <span>Rebates Researched?</span>
+                  <select x-model="editForm.rebatesResearched" @input="autoSave">
+                    <option value="already_researched">Already Researched</option>
+                    <option value="already_applied">Already Applied</option>
+                    <option value="apply_today">Apply Today</option>
+                    <option value="not_interested">Not Interested</option>
+                  </select>
+                </label>
+                <template x-if="editForm.rebatesResearched === 'already_applied'">
+                  <label>
+                    <span>ESP Code</span>
+                    <input type="text" x-model="editForm.espCode" @input="autoSave">
+                  </label>
+                </template>
+                <label>
+                  <span>Financing Interest?</span>
+                  <select x-model="editForm.financingInterest" @input="autoSave">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                  </select>
+                </label>
+                <template x-if="editForm.financingInterest === 'yes'">
+                  <label>
+                    <span>Financing Options (Select all that apply)</span>
+                    <div style="margin-top: 5px;">
+                      <template x-for="option in formOptions.financingOptions" :key="option.value">
+                        <label style="display: block;">
+                          <input type="checkbox" x-model="editForm.financingOptions" :value="option.value" style="margin-right: 5px;" @input="autoSave">
+                          <span x-text="option.label"></span>
+                        </label>
+                      </template>
+                    </div>
+                  </label>
+                  <template x-if="editForm.financingOptions.includes('other')">
+                    <label>
+                      <span>Other Financing Option (Specify)</span>
+                      <input type="text" x-model="editForm.otherFinancingOption" @input="autoSave">
+                    </label>
+                  </template>
+                </template>
+                <label>
+                  <span>Information to Email (Select all that apply)</span>
+                  <div style="margin-top: 5px;">
+                    <template x-for="option in formOptions.infoBundles" :key="option.value">
+                      <label style="display: block;">
+                        <input type="checkbox" x-model="editForm.infoBundles" :value="option.value" style="margin-right: 5px;" @input="autoSave">
+                        <span x-text="option.label"></span>
+                      </label>
+                    </template>
+                  </div>
+                </label>
+                <label>
+                  <span>Additions to Home?</span>
+                  <select x-model="editForm.additions" @input="autoSave">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                  </select>
+                </label>
+                <template x-if="editForm.additions === 'yes'">
+                  <label>
+                    <span>Additions Details</span>
+                    <textarea x-model="editForm.additionsDetails" @input="autoSave"></textarea>
+                  </label>
+                </template>
+                <label>
+                  <span>Windows/Insulation Upgrades?</span>
+                  <select x-model="editForm.windowsInsulation" @input="autoSave">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                  </select>
+                </label>
+                <template x-if="editForm.windowsInsulation === 'yes'">
+                  <label>
+                    <span>Windows/Insulation Details</span>
+                    <textarea x-model="editForm.windowsInsulationDetails" @input="autoSave"></textarea>
+                  </label>
+                </template>
+                <button @click="sendRebateInfo" class="blue-btn" style="width: 100%; margin-bottom: 10px;">Send to Customer</button>
+                <div style="display: flex; justify-content: flex-end;">
+                  <button @click="editStep = 2" class="blue-btn">Next</button>
+                </div>
+              </div>
+            </template>
+
+            <!-- Step 2: Mechanical Room -->
+            <template x-if="editStep === 2">
+              <div>
+                <h4 style="font-size: 1.2em; margin-bottom: 10px;">Step 2: Mechanical Room</h4>
+                <label>
+                  <span>Mechanical Room Location</span>
+                  <input type="text" x-model="editForm.mechanicalRoomLocation" @input="autoSave">
+                </label>
+                <label>
+                  <span>Gas Piping Supports New System?</span>
+                  <select x-model="editForm.gasPipingSupport" @input="autoSave">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                  </select>
+                </label>
+                <template x-if="editForm.gasPipingSupport === 'no'">
+                  <label>
+                    <span>Gas Piping Issues (Select all that apply)</span>
+                    <div style="margin-top: 5px;">
+                      <template x-for="option in formOptions.gasPipingIssues" :key="option.value">
+                        <label style="display: block;">
+                          <input type="checkbox" x-model="editForm.gasPipingIssues" :value="option.value" style="margin-right: 5px;" @input="autoSave">
+                          <span x-text="option.label"></span>
+                        </label>
+                      </template>
+                    </div>
+                  </label>
+                  <template x-if="editForm.gasPipingIssues.includes('other')">
+                    <label>
+                      <span>Other Gas Piping Issue (Specify)</span>
+                      <input type="text" x-model="editForm.otherGasPipingIssue" @input="autoSave">
+                    </label>
+                  </template>
+                </template>
+                <label>
+                  <span>Floor Drain Available?</span>
+                  <select x-model="editForm.floorDrain" @input="autoSave">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Electrical Panel Capacity?</span>
+                  <select x-model="editForm.electricalPanelCapacity" @input="autoSave">
+                    <option value="sufficient">Sufficient</option>
+                    <option value="insufficient">Insufficient</option>
+                  </select>
+                </label>
+                <template x-if="editForm.electricalPanelCapacity === 'insufficient'">
+                  <label>
+                    <span>Electrical Panel Issues</span>
+                    <textarea x-model="editForm.electricalPanelIssues" @input="autoSave"></textarea>
+                  </label>
+                </template>
+                <div style="display: flex; justify-content: space-between;">
+                  <button @click="editStep = 1" style="background: #6c757d; color: #fff; padding: 6px 12px; border: none; border-radius: 4px;">Previous</button>
+                  <button @click="editStep = 3" class="blue-btn">Next</button>
+                </div>
+              </div>
+            </template>
+
+            <!-- Step 3: Rest of House -->
+            <template x-if="editStep === 3">
+              <div>
+                <h4 style="font-size: 1.2em; margin-bottom: 10px;">Step 3: Rest of House</h4>
+                <label>
+                  <span>Drafts Noticed?</span>
+                  <select x-model="editForm.draftsNoticed" @input="autoSave">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                  </select>
+                </label>
+                <template x-if="editForm.draftsNoticed === 'yes'">
+                  <label>
+                    <span>Explain Drafts Noticed</span>
+                    <textarea x-model="editForm.draftsNoticedDetails" @input="autoSave"></textarea>
+                  </label>
+                </template>
+                <label>
+                  <span>Basement Dampness?</span>
+                  <select x-model="editForm.basementDampness" @input="autoSave">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                  </select>
+                </label>
+                <template x-if="editForm.basementDampness === 'yes'">
+                  <label>
+                    <span>Basement Dampness Details</span>
+                    <textarea x-model="editForm.basementDampnessDetails" @input="autoSave"></textarea>
+                  </label>
+                </template>
+                <label>
+                  <span>Interest in Air Purifiers?</span>
+                  <select x-model="editForm.airPurifiers" @input="autoSave">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Number of Indoor Units (for Mini/Multi Split)</span>
+                  <input type="number" x-model="editForm.indoorUnits" @input="autoSave">
+                </label>
+                <label>
+                  <span>Ducting Condition</span>
+                  <select x-model="editForm.ductingCondition" @input="autoSave">
+                    <option value="good">Good</option>
+                    <option value="needs_repair">Needs Repair</option>
+                    <option value="needs_replacement">Needs Replacement</option>
+                  </select>
+                </label>
+                <template x-if="editForm.ductingCondition !== 'good'">
+                  <label>
+                    <span>Ducting Issues</span>
+                    <textarea x-model="editForm.ductingIssues" @input="autoSave"></textarea>
+                  </label>
+                </template>
+                <div style="display: flex; justify-content: space-between;">
+                  <button @click="editStep = 2" style="background: #6c757d; color: #fff; padding: 6px 12px; border: none; border-radius: 4px;">Previous</button>
+                  <button @click="editStep = 4" class="blue-btn">Next</button>
+                </div>
+              </div>
+            </template>
+
+            <!-- Step 4: Attic -->
+            <template x-if="editStep === 4">
+              <div>
+                <h4 style="font-size: 1.2em; margin-bottom: 10px;">Step 4: Attic</h4>
+                <label>
+                  <span>Attic Height</span>
+                  <input type="text" x-model="editForm.atticHeight" @input="autoSave">
+                </label>
+                <label>
+                  <span>Attic Image</span>
+                  <input type="file" accept="image/*" capture="environment" style="display: none;" id="atticImageInput" @change="handleImageUpload($event)">
+                  <label for="atticImageInput" class="image-upload-btn">Take or Select Photo</label>
+                  <img :src="editForm.atticImage" class="image-preview" :class="{ 'show': editForm.atticImage }" alt="Attic Image Preview">
+                </label>
+                <label>
+                  <span>Ventilation Fan Location</span>
+                  <input type="text" x-model="editForm.ventilationFanLocation" @input="autoSave">
+                </label>
+                <div style="display: flex; justify-content: space-between;">
+                  <button @click="editStep = 3" style="background: #6c757d; color: #fff; padding: 6px 12px; border: none; border-radius: 4px;">Previous</button>
+                  <button @click="editStep = 5" class="blue-btn">Next</button>
+                </div>
+              </div>
+            </template>
+
+            <!-- Step 5: Outside -->
+            <template x-if="editStep === 5">
+              <div>
+                <h4 style="font-size: 1.2em; margin-bottom: 10px;">Step 5: Outside</h4>
+                <label>
+                  <span>Outdoor Unit Location</span>
+                  <input type="text" x-model="editForm.outdoorUnitLocation" @input="autoSave">
+                </label>
+                <label>
+                  <span>LiDAR Scan Completed?</span>
+                  <select x-model="editForm.lidarScan" @input="autoSave">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                  </select>
+                </label>
+                <div style="display: flex; justify-content: space-between;">
+                  <button @click="editStep = 4" style="background: #6c757d; color: #fff; padding: 6px 12px; border: none; border-radius: 4px;">Previous</button>
+                  <button @click="editStep = 6" class="blue-btn">Next</button>
+                </div>
+              </div>
+            </template>
+
+            <!-- Step 6: Quote Generation -->
+            <template x-if="editStep === 6">
+              <div>
+                <h4 style="font-size: 1.2em; margin-bottom: 10px;">Step 6: Quote Generation</h4>
+                <label>
+                  <span>Select System</span>
+                  <select x-model="editForm.selectedSystem" @change="calculateQuote; autoSave">
+                    <option value="">Select a system</option>
+                    <template x-for="item in pricebook.filter(item => item.category.includes('Install'))" :key="item.uuid">
+                      <option :value="item.uuid" x-text="item.name + ' ($' + item.price + ')'"></option>
+                    </template>
+                  </select>
+                </label>
+                <label>
+                  <span>Estimated Install Days</span>
+                  <input type="number" x-model="editForm.estimatedInstallDays" @input="calculateQuote; autoSave">
+                </label>
+                <label>
+                  <span>Total Quote Amount ($)</span>
+                  <input type="number" x-model="editForm.quoteAmount" readonly>
+                </label>
+                <label>
+                  <span>Status</span>
+                  <select x-model="editForm.status" @input="autoSave">
+                    <option value="Estimate Needs To Be Completed">Estimate Needs To Be Completed</option>
+                    <option value="Scheduled Estimate">Scheduled Estimate</option>
+                    <option value="Completed Estimate">Completed Estimate</option>
+                    <option value="Approved">Approved</option>
+                    <option value="Completed">Completed</option>
+                    <option value="Invoice Sent">Invoice Sent</option>
+                    <option value="Invoice Paid">Invoice Paid</option>
+                  </select>
+                </label>
+                <div style="display: flex; justify-content: space-between;">
+                  <button @click="editStep = 5" style="background: #6c757d; color: #fff; padding: 6px 12px; border: none; border-radius: 4px;">Previous</button>
+                  <button @click="saveEstimate" class="blue-btn">Save</button>
+                </div>
+              </div>
+            </template>
+          </div>
+          <button @click="showEditModal = false" class="red-btn" style="width: 100%;">Close</button>
+        </div>
+      </div>
+    </template>
+
+    <!-- Material Order Generator Section -->
+    <template x-if="page === 'orders'">
+      <div class="material-order">
+        <h2>Material Order Generator</h2>
+        <div style="margin-top: 20px;">
+          <label>
+            <span>Job Number (PO)</span>
+            <input type="text" x-model="order.jobNumber">
+          </label>
+          <label>
+            <span>Address</span>
+            <input type="text" x-model="order.address">
+          </label>
+          <label>
+            <span>Installation Date(s)</span>
+            <input type="text" x-model="order.installDates">
+          </label>
+          <label>
+            <span>Site Contact Name</span>
+            <input type="text" x-model="order.siteName">
+          </label>
+          <label>
+            <span>Site Contact Phone</span>
+            <input type="text" x-model="order.sitePhone">
+          </label>
+          <label>
+            <span>Shipping Date</span>
+            <input type="text" x-model="order.shippingDate">
+          </label>
+          <label>
+            <span>Delivery Details</span>
+            <input type="text" x-model="order.deliveryDetails">
+          </label>
+          <label>
+            <span>Delivery Contact Name</span>
+            <input type="text" x-model="order.deliveryName">
+          </label>
+          <label>
+            <span>Delivery Contact Phone</span>
+            <input type="text" x-model="order.deliveryPhone">
+          </label>
+          <label>
+            <span>Project Account</span>
+            <select x-model="order.projectAccount">
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </label>
+          <label>
+            <span>Materials and Quantities</span>
+            <div>
+              <template x-for="(item, index) in order.items" :key="index">
+                <div class="pricebook-item">
+                  <select x-model="item.uuid" @change="updateItemVendor(index)">
+                    <option value="">Select an item</option>
+                    <template x-for="pricebookItem in pricebook" :key="pricebookItem.uuid">
+                      <option :value="pricebookItem.uuid" x-text="pricebookItem.name + ' (' + pricebookItem.type + ')'"></option>
+                    </template>
+                  </select>
+                  <input type="number" x-model.number="item.quantity" min="1" placeholder="Qty">
+                  <button @click="removeItem(index)" class="red-btn">X</button>
+                </div>
+              </template>
+              <button @click="addItem" class="blue-btn" style="margin-top: 10px;">Add Item</button>
+            </div>
+          </label>
+          <button @click="submitOrder" class="blue-btn" style="width: 100%;">Generate and Send Order</button>
+        </div>
+      </div>
+    </template>
+  </main>
+
+  <!-- Navigation -->
+  <script>
+    async function initNav() {
+      document.getElementById('nav-placeholder').innerHTML = `
+        <nav>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <img src="luxury-climate-logo-dark.svg" alt="HVAC Logo" style="height: 40px;">
+            <span style="font-size: 1.2em; font-weight: bold;">HVAC Estimate Portal</span>
+          </div>
+          <div style="margin-top: 10px;">
+            <button x-on:click="page = 'estimate'">Estimate Manager</button>
+            <button x-on:click="page = 'orders'">Material Orders</button>
+          </div>
+        </nav>
+      `;
+    }
+  </script>
+</body>
+</html>

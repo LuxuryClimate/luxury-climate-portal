@@ -1,0 +1,696 @@
+industry,industry_uuid,category,subcategory_1,subcategory_2,subcategory_3,uuid,name,description,price,cost,taxable,unit_of_measure,task_code,online_booking_enabled
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Repair,"","","",olit_08bcb5ce8dee4caebac6c1515e4996fd,Journeyman,"𝐓𝐞𝐜𝐡𝐧𝐢𝐜𝐢𝐚𝐧 𝐧𝐨𝐭𝐞𝐬
+
+𝐄𝐫𝐫𝐨𝐫:
+𝐅𝐨𝐮𝐧𝐝:
+𝐒𝐨𝐥𝐮𝐭𝐢𝐨𝐧:
+𝐀𝐝𝐝𝐢𝐭𝐢𝐨𝐧𝐚𝐥 𝐈𝐬𝐬𝐮𝐞:
+𝐍𝐞𝐱𝐭 𝐒𝐭𝐞𝐩𝐬:",$152.00,$70.00,true,per hour,JOURNEYMAN,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Repair,"","","",olit_df23b1d4f6b14658bca983a188955830,Technician,"𝐓𝐞𝐜𝐡𝐧𝐢𝐜𝐢𝐚𝐧 𝐧𝐨𝐭𝐞𝐬
+
+𝐄𝐫𝐫𝐨𝐫:
+𝐅𝐨𝐮𝐧𝐝:
+𝐒𝐨𝐥𝐮𝐭𝐢𝐨𝐧:
+𝐀𝐝𝐝𝐢𝐭𝐢𝐨𝐧𝐚𝐥 𝐈𝐬𝐬𝐮𝐞:
+𝐍𝐞𝐱𝐭 𝐒𝐭𝐞𝐩𝐬:",$132.00,$50.00,true,per hour,TECHNICIAN,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Repair,"","","",olit_f9c1f6c7fea74a03af9f570d3864bc0f,Helper,"𝐓𝐞𝐜𝐡𝐧𝐢𝐜𝐢𝐚𝐧 𝐧𝐨𝐭𝐞𝐬
+
+𝐄𝐫𝐫𝐨𝐫:
+𝐅𝐨𝐮𝐧𝐝:
+𝐒𝐨𝐥𝐮𝐭𝐢𝐨𝐧:
+𝐀𝐝𝐝𝐢𝐭𝐢𝐨𝐧𝐚𝐥 𝐈𝐬𝐬𝐮𝐞:
+𝐍𝐞𝐱𝐭 𝐒𝐭𝐞𝐩𝐬:",$122.00,$40.00,true,per hour,HELPER,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Repair,"","","",olit_d9903d7fd87a4e5dbdb8b19a7c05fef6,Repair,"
+Includes travel and up to two hours on-site. This ensures our technician can perform a thorough diagnostic and repair, aiming to fix the issue correctly on the first visit. If more time is needed, the technician will discuss any additional costs with you at the two-hour mark.
+
+𝐓𝐞𝐜𝐡𝐧𝐢𝐜𝐢𝐚𝐧 𝐧𝐨𝐭𝐞𝐬
+
+𝐏𝐫𝐨𝐛𝐥𝐞𝐦: 
+𝐅𝐨𝐮𝐧𝐝: 
+𝐒𝐨𝐥𝐮𝐭𝐢𝐨𝐧: 
+𝐑𝐞𝐬𝐮𝐥𝐭: ",$330.00,$125.00,true,Each,REPAIR,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Promotions & special offers,"","","",olit_c631f802b51d46d590ea87a7e5f8a566,Replacement of Thermostats at Mayfair ,"",$89.00,$25.00,true,Each,"",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Maintenance,Ventilation,"","",olit_0ced024afc674d30a80245633f7527dc,Regular HRV/ERV,"Regular maintenance of HRV/ERV system, including core and filter cleaning. Refer to the attached checklist for details. Filter replacement not included.",$198.00,$75.00,true,Each,MAINTRHRV,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Maintenance,Ventilation,"","",olit_2c8dda6f7f924f488b5b7672fe641635,Ventilation fan cleaning,"Cleaning of ventilation fan components, including blades and housing, to improve airflow and efficiency.",$132.00,$50.00,true,Each,MAINTVFC,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Maintenance,Geothermal,"","",olit_1fb3a61336a64bd68387311bab44fe60,Major geothermal maintenance,Major geothermal maintenance. Refer to the attached checklist for details.,$396.00,$150.00,true,Each,MAINTMGEO,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Maintenance,Geothermal,"","",olit_ff7c894943cb4672bc0a2b9d7738e98d,Regular geothermal maintenance,Regular geothermal maintenance. Refer to the attached checklist for details.,$264.00,$100.00,true,Each,MAINTRGEO,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Maintenance,Hot water,"","",olit_97563f80183e425ea1353557026f16e8,Regular heat pump pool heater,Regular heat pump pool heater maintenance. Refer to the attached checklist for details.,$264.00,$100.00,true,Each,MAINTRHPPH,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Maintenance,Hot water,"","",olit_2252b96c9a3945a0baec355e76eafa9b,Regular gas pool heater,Regular gas pool heater maintenance. Refer to the attached checklist for details.,$264.00,$100.00,true,Each,MAINTRGPH,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Maintenance,Hot water,"","",olit_1aab2ed6fdc4466588eca551c7c4d6b4,Major boiler,Major boiler maintenance. Refer to the attached checklist for details.,$396.00,$150.00,true,Each,MAINTMB,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Maintenance,Hot water,"","",olit_1650b6b4e9a44063a699e5034cf6c082,Regular boiler,Regular boiler maintenance. Refer to the attached checklist for details.,$264.00,$100.00,true,Each,MAINTRB,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Maintenance,Hot water,"","",olit_82d2a0f8ac4c429fac98ba7ed81f8c34,Regular hot water tank,Regular water heater maintenance. Refer to the attached checklist for details.,$132.00,$50.00,true,Each,MAINTRHWT,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Maintenance,Hot water,"","",olit_b3e6cf5214fd4e2e875eaf61bc7d6fa0,Major tankless water heater,"Major tankless water heater maintenance, including system flushing to remove buildup and ensure optimal performance. Refer to the attached checklist for details.",$396.00,$150.00,true,Each,MAINTMTWH,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Maintenance,Hot water,"","",olit_4a5488de7ff3424f9d53f095ffc36493,Regular tankless water heater,"Regular tankless water heater maintenance, including system flushing to remove buildup and ensure optimal performance. Refer to the attached checklist for details.",$264.00,$100.00,true,Each,MAINTRTWH,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Maintenance,Dual fuel,"","",olit_1bd640ff028a438db4602193b3ef40f0,Dual fuel indoor coil cleaning,"on site Cleaning of the indoor coil, including removal of debris and buildup, to ensure optimal performance.",$198.00,$75.00,true,Each,MAINTDFIDC,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Maintenance,Dual fuel,"","",olit_e3ee65f6eb4a436cace31d8af9663c38,Dual fuel blower cleaning,"On-Site Blower removal, disassembly, and cleaning the blower wheel, motor, and housing.",$198.00,$75.00,true,Each,MAINTDFBC,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Maintenance,Dual fuel,"","",olit_b4377c7432b44d188c996283f9697cd6,Major dual fuel cooling,Major dual fuel maintenance with an emphasis on thorough heat pump servicing. Refer to the attached checklist for details. Filter replacement not included.,$330.00,$125.00,true,Each,MAINTMDFC,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Maintenance,Dual fuel,"","",olit_ba88e14d6c604fe59354f92aceaeeced,Regular dual fuel cooling,Regular dual fuel maintenance with an emphasis on thorough heat pump servicing. Refer to the attached checklist for details. Filter replacement not included.,$264.00,$100.00,true,Each,MAINTRDFC,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Maintenance,Dual fuel,"","",olit_038cd916bfb849c38c0c589901afde7d,Major dual fuel heating,Major dual fuel maintenance with an emphasis on thorough furnace servicing. Refer to the attached checklist for details. Filter replacement not included.,$462.00,$175.00,true,Each,MAINTMDFH,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Maintenance,Dual fuel,"","",olit_f2988c979456471fa168e7056512bbbc,Regular dual fuel heating,Regular dual fuel maintenance with an emphasis on thorough furnace servicing. Refer to the attached checklist for details. Filter replacement not included.,$330.00,$125.00,true,Each,MAINTRDFH,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Maintenance,Fireplace,"","",olit_13ab2d4131f34dc6aba507c2dda8b6bc,Major fireplace,Regular fireplace maintenance. Refer to the attached checklist for details.,$396.00,$150.00,true,Each,MAINTMFP,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Maintenance,Fireplace,"","",olit_b590a89d1ce34644b4a06c2ff8c600e3,Regular fireplace,Regular fireplace maintenance. Refer to the attached checklist for details.,$264.00,$100.00,true,Each,MAINTRFP,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Maintenance,Furnace,"","",olit_70a618734abc464e9d080057276425ea,Furnace blower cleaning,"Blower removal, disassembly, and thorough cleaning of the blower wheel, motor, and housing.",$198.00,$75.00,true,Each,MAINTFBC,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Maintenance,Furnace,"","",olit_41aa7ed7e3d7407181202e379ae6eb77,Major furnace,Major furnace maintenance. Refer to the attached checklist for details. Filter replacement not included.,$330.00,$125.00,true,Each,MAINTMF,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Maintenance,Furnace,"","",olit_b62cc09b74ae457aabe9103fba0a4323,Regular furnace,Regular furnace maintenance. Refer to the attached checklist for details. Filter replacement not included.,$198.00,$75.00,true,Each,MAINTRF,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Maintenance,Multi Split,"","",olit_29b1935bd8464a979d55d10b5524ca69,Air handler coil cleaning,"Cleaning of the indoor air handler coil, including removal of debris and buildup to ensure optimal performance.",$198.00,$75.00,true,Each,MAINTAHCCMULT,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Maintenance,Multi Split,"","",olit_62eb4cc3d863469faa5706e9269109aa,Air handler blower cleaning,"Blower removal, disassembly, and cleaning the blower wheel, motor, and housing.",$198.00,$75.00,true,Each,MAINTAHBCMULTI,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Maintenance,Multi Split,"","",olit_9826ab7892d84719969aba1831561e55,Indoor ductless cleaning,"Thorough cleaning of the indoor ductless unit, including coil, filters, and housing, to maintain optimal performance.",$330.00,$125.00,true,Each,MAINTIDCMULT,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Maintenance,Multi Split,"","",olit_048bcf67bcf8432a90c9b9af1ca0bdeb,Major multi split,Major multi split maintenance. Refer to the attached checklist for details. Includes cleaning indoor filter.,$330.00,$125.00,true,Each,MAINTMMULT,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Maintenance,Multi Split,"","",olit_71043fd6a17f4b7589d65074d4013ef7,Regular multi split,Regular multi split maintenance. Refer to the attached checklist for details. Includes cleaning the indoor filter.,$264.00,$100.00,true,Each,MAINTRMULT,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Maintenance,Mini Split,"","",olit_b0e0904848824d70bd9f0a9cb0f81ac9,Indoor ductless cleaning,"Thorough cleaning of indoor ductless unit, including coil, filters, and housing, to maintain optimal performance.",$330.00,$125.00,true,Each,MAINTIDCMINI,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Maintenance,Mini Split,"","",olit_5d7411c79a23469d8c4968a470e03e56,Major mini split,Major mini split maintenance. Refer to the attached checklist for details. Includes cleaning the indoor filter.,$330.00,$125.00,true,Each,MAINTMMINI,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Maintenance,Mini Split,"","",olit_35be8d8aa2a44e9ca71e1229367de4f0,Regular mini split,Regular mini split maintenance. Refer to the attached checklist for details. Includes cleaning the indoor filter.,$198.00,$75.00,true,Each,MAINTRMINI,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Maintenance,Central heat pump,"","",olit_9cc0a551a9fc42528e80a48f9f1a5202,Air handler coil cleaning,"on site Cleaning of the indoor air handler coil, including removal of debris and buildup, to ensure optimal performance.",$198.00,$75.00,true,Each,MAINTICHP,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Maintenance,Central heat pump,"","",olit_1ef11224ee66431c914f26a1b9a80112,Air handler blower cleaning,"on site Blower removal, disassembly, and cleaning the blower wheel, motor, and housing.",$198.00,$75.00,true,Each,MAINTBCHP,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Maintenance,Central heat pump,"","",olit_dd5ad27599664fbb9c5687873e2ad339,Major central heat pump,Major central heat pump maintenance. Refer to the attached checklist for details. Filter replacement not included.,$330.00,$125.00,true,Each,MAINTMCHP,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Maintenance,Central heat pump,"","",olit_e464ded509fe45209882b640e42f675a,Regular central heat pump,Regular central heat pump maintenance. Refer to the attached checklist for details. Filter replacement not included.,$264.00,$100.00,true,Each,MAINTRCHP,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Maintenance,Mini Split,"","",olit_7280d771a61f4151a8d3ef10def73127,Additional Indoor Unit Cleaning ,"",$198.00,$75.00,true,Each,"",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Payment Fees ,"","","",olit_57e8cd249c194ca3bf027a9c26a88c6d,Convience Fee ,You can cancel the transaction and will not be billed for any fees when paying with an alternative method. ,$0.00,$50.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Maintenance,Air Conditioner ,"","",olit_5f20154d461b4c8a8e010816900c9373,Regular Air Conditioner ,Regular air conditioner maintenance. Refer to the attached checklist for details. Filter replacement not included.,$264.00,$100.00,true,Each,"",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Maintenance,Air Conditioner ,"","",olit_212713f97830460fa23d420eefefe6d0,Major Air Conditioner ,Major air conditioner maintenance. Refer to the attached checklist for details. Filter replacement not included.,$330.00,$125.00,true,Each,"",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Dual Fuel,Coleman,"",olit_b2ded7c9a27648ebab90f8ded0f1cf0e,Coleman Dual Fuel System - HH824E2S11 + TM9V040A10MP12,"Details:
+◼️ Dual fuel: $*
+◼️ Hot water: $*
+◼️ Electrical service upgrade: $*
+◼️ Ventilation: $*
+◼️ Ductwork: $*
+◼️ Energy Savings Plan Code: *
+◼️ Original system fuel: *
+◼️ New system fuel: Dual fuel
+◼️ System configuration: Centrally ducted
+◼️ Supplemental or backup heating: Natural gas furnace
+◼️ Electrical permit: *
+◼️ Gas appliance & piping permit: *
+
+Includes:
+✔️ 10-year parts warranty
+✔️ 1-year labour warranty
+✔️ Lifetime workmanship warranty
+✔️ Gas Permit
+✔️ Heat loss and heat gain calculation
+✔️ Coleman 2-stage furnace with ECM motor
+✔️ Coleman HH8 cold-climate heat Pump
+✔️ Coleman cased aluminum indoor coil with RDS 
+✔️ Honeywell T10+ Thermostat & EIM module
+✔️ Outdoor unit snow stand
+✔️ Electrical connection
+✔️ Surge protection for furnace
+✔️ Surge-protection disconnect for heat pump
+✔️ Acid neutralizer for furnace condensate
+✔️ Drain connection
+✔️ Ductwork connection
+✔️ Gas piping connection
+✔️ Refrigerant pipe connection
+✔️ Refrigerant filter-drier
+✔️ Pressure testing and evacuation
+✔️ Sealing and insulation of all wall penetrations
+✔️ Homeowner system training
+✔️ Commissioning report
+✔️ Shipping
+✔️ Disposal and recycling
+
+System Specifications:
+🔹 AHRI: 214397528
+🔹 Brand: Coleman
+🔹 Outdoor model number: HH824E2S11
+🔹 Indoor model number(s): CTF30A5ADS1
+🔹 Furnace model (if applicable): TM9V040A10MP12
+🔹 Tonnage: 2
+🔹 HSPF2: 9.00
+🔹 SEER2: 17.00",$15163.62,$10161.62,true,Each,214397528,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Dual Fuel,Warranty,"",olit_37c7e0329165428ab0ff884b312969f4,Coleman 10-year extended labour warranty,✔️ 10-year extended labour warranty,$1017.50,$976.50,true,Each,COLEMANLABOUR,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Dual Fuel,Line sets,"",olit_290aeaa060a14e69b3e3bfdba095b2bb,"Refrigerant pipes, connecting wire, & shielded sensor wire","✔️ 3/4"" UV-rated and insulated refrigerant pipe
+✔️ 3/8"" UV-rated and insulated refrigerant pipe
+✔️ Low-voltage communication wire
+✔️ Shielded wire for outdoor sensor
+✔️ Hanging straps
+✔️ Wall thimble",$798.72,$593.72,true,Per 50 ft,3438LINE8LVT2SHLD50,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Dual Fuel,Removal & replacement,"",olit_5a493849472842cf865b9885d4c5faec,Remove existing outdoor unit,"✔️ Refrigerant recovery
+✔️ Piping and electrical disconnection
+✔️ Recycling of the old outdoor unit",$264.00,$100.00,true,Each,OUTDOORREMOVE,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Dual Fuel,Line sets,"",olit_0d930ec2e71b4c27b1ac67813e9c97e6,"Refrigerant pipes, connecting wire, & shielded sensor wire","✔️ 5/8"" UV-rated and insulated refrigerant pipe
+✔️ 3/8"" UV-rated and insulated refrigerant pipe
+✔️ Low-voltage communication wire
+✔️ Shielded wire for outdoor sensor
+✔️ Hanging straps
+✔️ Wall thimble",$766.93,$561.93,true,Per 50 ft,5838LINE8LVT2SHLD50,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Dual Fuel,Access,"",olit_7fbab38462224abba81f126641e721f1,Crawlspace indoor unit,"Additional time is required to install the indoor equipment in a crawlspace.
+
+
+",$2640.00,$1000.00,true,Each,DUALFUELCRAWL,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Dual Fuel,Condensate,"",olit_beb372d7344943bb9555a661384763d3,Condensate pump (low-profile),"✔️ Low-profile condensate pump
+✔️ Vinyl drain tubing
+✔️ Plug installation
+✔️ Drain termination
+",$417.96,$253.96,true,Each,LPCONDENSATEPUMP,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Dual Fuel,Condensate,"",olit_24f676efe56d420c95d56fbb609962f5,Condensate pump,"✔️ Condensate pump
+✔️ Vinyl drain tubing
+✔️ Plug installation
+✔️ Drain termination
+",$426.82,$262.82,true,Each,CONDENSATEPUMP,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Dual Fuel,Mounting,"",olit_0581f83eff574d6caccb13d53015fdb6,"24"" x 48"" Wood framed concrete slabs","✔️ Pressure treated wood 4"" x 4""
+✔️ Two concrete slabs 24"" x 24"" 
+✔️ Base rock",$374.20,$210.20,true,Each,2448WOODFRAME,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Dual Fuel,Line set cover,"",olit_8c153bbbced141b08792125fad3918e4,White line set covering kit,"✔️ 7.5 ft Length of white line set cover
+✔️ Elbow
+✔️ Termination
+✔️ Inlet",$295.74,$172.74,true,Each,LINEKITWHITE,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Dual Fuel,Line set cover,"",olit_03f2ccca265c4d6e90420f6a35f174ab,Ivory line set covering kit,"✔️ 7.5 ft Length of ivory line set cover
+✔️ Elbow
+✔️ Termination
+✔️ Inlet",$295.42,$172.42,true,Each,IVORYLINEKIT,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Dual Fuel,Access,"",olit_1d75343afc94467e8bcc674d35d9adfa,Line set through attic or crawlspace,"Additional time is required to install line sets and connecting wires through crawlspace and attics.
+
+
+",$330.00,$125.00,true,Each,LINESETCRAWL,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Dual Fuel,Coleman,"",olit_8031255c9a854c7e84778491cfeb9993,Coleman Dual Fuel System - HH836E2S11 + TM9V060B12MP12C,"Details:
+◼️ Dual fuel: $*
+◼️ Hot water: $*
+◼️ Electrical service upgrade: $*
+◼️ Ventilation: $*
+◼️ Ductwork: $*
+◼️ Energy Savings Plan Code: *
+◼️ Original system fuel: *
+◼️ New system fuel: Dual fuel
+◼️ System configuration: Centrally ducted
+◼️ Supplemental or backup heating: Natural gas furnace
+◼️ Electrical permit: *
+◼️ Gas appliance & piping permit: *
+
+Includes:
+✔️ 10-year parts warranty
+✔️ 1-year labour warranty
+✔️ Lifetime workmanship warranty
+✔️ Gas Permit
+✔️ Heat loss and heat gain calculation
+✔️ Coleman 2-stage furnace with ECM motor
+✔️ Coleman HH8 cold-climate heat pump
+✔️ Coleman cased aluminum indoor coil with RDS
+✔️ Honeywell T10+ Thermostat & EIM module
+✔️ Outdoor unit snow stand
+✔️ Electrical connection
+✔️ Surge protection for furnace
+✔️ Surge-protection disconnect for heat pump
+✔️ Acid neutralizer for furnace condensate
+✔️ Drain connection
+✔️ Ductwork connection
+✔️ Gas piping connection
+✔️ Refrigerant pipe connection
+✔️ Refrigerant filter-drier
+✔️ Pressure testing and evacuation
+✔️ Sealing and insulation of all wall penetrations
+✔️ Homeowner system training
+✔️ Shipping
+✔️ Commissioning report
+✔️ Disposal and recycling
+
+System Specifications:
+🔹 AHRI: 214396840
+🔹 Brand: Coleman
+🔹 Outdoor model number: HH836E2S11
+🔹 Indoor model number(s): CTF36B5CDS1
+🔹 Furnace model (if applicable): TM9V060B12MP12
+🔹 Tonnage: 3
+🔹 HSPF2: 8.50
+🔹 SEER2: 17.00",$15724.63,$10722.63,true,Each,214396840,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Dual Fuel,Mounting,"",olit_20b25ada95f446a89c312ce7049fd9d4,"36"" x 48"" Wood framed concrete slabs","✔️ Pressure treated wood 4"" x 4""
+✔️ Three concrete slabs 16"" x 32""
+✔️ Base rock",$387.67,$223.67,true,Each,3648WOODFRAME,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Dual Fuel,Mounting,"",olit_3a9ed6f19f754f1997cbac64f48b194a,"24"" x 48"" concrete slabs","✔️ Two concrete slabs 24"" x 24"" 
+✔️ Base rock",$205.62,$123.62,true,Each,2448WOODFRAME,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Dual Fuel,Mounting,"",olit_da5aa267745548baa6bf8e5f4f3e51a2,"36"" x 48"" concrete slabs","✔️ Three concrete slabs 16"" x 32""
+✔️ Base rock",$243.69,$161.69,true,Each,3648WOODFRAME,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Dual Fuel,Line sets,"",olit_1cbc4d36f7944ab5ada775b3969b014f,Flush of exsiting line set,"✔️ RX11-Flush kit
+✔️ Nitrogen purging",$324.41,$201.41,true,Each,FLUSH,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Dual Fuel,Filtration,"",olit_ef678ce545954886b99bb2f23b0c132d,MERV 11 platform filter cabinet,"✔️ Filter platform (Furnace 43"" wide)
+✔️ Spare MERV 11 air filter",$468.72,$345.72,true,Each,PPEAFB2843M8,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Dual Fuel,Filtration,"",olit_253e2b7a6c9844318e3093a77f9daf18,MERV 11 filter platform,"✔️ Filter platform (Furnace 32"" wide)
+✔️ Spare MERV 11 air filter",$436.62,$313.62,true,Each,PPEAFB2832M8,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Dual Fuel,Filtration,"",olit_45dc880061d44af6a55fc408ba548b69,MERV 11 filter cabinet,"✔️ Filter cabinet (Furnace side return)
+✔️ Spare MERV 11 air filter",$481.56,$358.56,true,Each,SIDEFILTERCAB,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Dual Fuel,Removal & replacement,"",olit_fac8658255a74326802c06f978209efe,Disconnect replacement,✔️ Removal of existing disconnect and installation of new,$263.73,$202.23,true,"",DISCREPLACEMENT,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Dual Fuel,Electrical,"",olit_fee8d5d5887a41849475a245cecd44ca,Outdoor unit electrical feed,"✔️ Wire from breaker panel to outdoor unit
+✔️ Electrical permit
+✔️ Breaker",$1252.00,$1170.00,true,Each,OUTDOORFEED,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Promotions & special offers,"","","",olit_a25fdde2addb4a518c973d3b2ca01108,Consultation (Quote for New or Replacement System),"When you book a consultation with Luxury Climate, we come to your home to assess your current system, understand your comfort goals, and design a solution that fits your space, budget, and lifestyle.
+
+We specialize in heat pump retrofits and take the time to explain how your system will work, what rebates you're eligible for, and what makes each option different. We use advanced tools like 3D scans and heat load calculations to ensure the right fit. No guesswork, no cookie-cutter solutions.
+
+What to expect:
+In-home assessment and walkthrough
+Expert guidance and rebate info
+Clear, customized recommendations
+No-pressure experience
+
+We believe comfort should be efficient, reliable, and tailored to you.",$0.00,$150.00,true,Each,CONSULTATION,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Ventilation,"","",olit_936e305c557843e88974cfc6f3267aa4,Panasonic ventilation fan,"✔️ FV-0511VKS3 - WhisperGreen Select Ventilation Fan
+✔️ R4.2 insulated 6"" flexible ducting
+✔️ Ventilation fan vapour barrier
+✔️ Smart Action Motion Sensor + Condensation Sensor
+✔️ Multi-Speed Module with High/Low Delay Timer
+
+
+",$1862.34,$1616.34,true,Each,VENTFAN,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Dual Fuel,Filtration,"",olit_617ffa4f74f140faab2a990099ccc3e5,MERV 11 filter downflow,"✔️ Filter box
+✔️ Custom fitting
+✔️ Spare MERV 11 air filter",$486.03,$322.03,true,Each,DFFILTERBOX,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Dual Fuel,Flue,"",olit_15c8a10fc8c040b28ecd55f68cc5ad20,Concentric flue termination through roof,"✔️ Concentric Vent Kit, 2"" x 16""
+✔️ Roof flashing
+✔️ Roof sealant
+",$549.85,$303.85,true,Each,CONCENTRICINSTALL,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Payment Fees ,"","","",olit_9a5ec98c9efc4f6385e76831036acfd0,Late Fee ,"",$0.00,$0.00,false,Each,"",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Dual Fuel,Coleman,"",olit_45e39c458a9b4d488316e2a10bff0735,Coleman Dual Fuel System - HMH72B341 + TM9Y060B12MP11,"Details:
+◼️ Dual fuel: $*
+◼️ Hot water: $*
+◼️ Electrical service upgrade: $*
+◼️ Ventilation: $*
+◼️ Ductwork: $*
+◼️ Energy Savings Plan Code: *
+◼️ Original system fuel: *
+◼️ New system fuel: Dual fuel
+◼️ System configuration: Centrally ducted
+◼️ Supplemental or backup heating: Natural gas furnace
+◼️ Electrical permit: *
+◼️ Gas appliance & piping permit: *
+
+Includes:
+✔️ 10-year parts warranty
+✔️ 1-year labour warranty
+✔️ Lifetime workmanship warranty
+✔️ Gas Permit
+✔️ Heat loss and heat gain calculation
+✔️ Coleman 2-stage furnace with ECM motor
+✔️ Coleman HMH7 cold-climate heat Pump
+✔️ Coleman cased aluminum indoor coil
+✔️ T10+ thermostat, temperature sensor, EIM
+✔️ Outdoor unit snow stand
+✔️ Electrical connection
+✔️ Surge protection for furnace
+✔️ Surge protection disconnect for heat pump
+✔️ Acid neutralizer for furnace condensate
+✔️ Drain connection
+✔️ Ductwork connection
+✔️ Gas piping connection
+✔️ Refrigerant pipe connection
+✔️ Refrigerant filter-drier
+✔️ Pressure testing and evacuation
+✔️ Sealed wall penetrations
+✔️ Homeowner system training
+✔️ Comprehensive commissioning report
+✔️ Shipping
+✔️ Disposal and recycling
+
+System Specifications:
+🔹 AHRI: 211387205
+🔹 Brand: Coleman
+🔹 Outdoor model number: HMH72B341
+🔹 Indoor model number(s): XAFB36DBCN1
+🔹 Furnace model (if applicable): TM9Y060B12MP11
+🔹 HSPF2: 8.50
+🔹 SEER2: 16.50",$14882.53,$9880.53,true,Each,211387205,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Dual Fuel,Coleman,"",olit_3d94e5e90f244675854d750f9b65bbca,Coleman Dual Fuel System - HMH72B341 + TM9Y060B12MP11 (Comparison),"✔️ 10-year parts warranty
+✔️ 1-year labour warranty
+✔️ Lifetime workmanship warranty
+✔️ Gas Permit
+✔️ Heat loss and heat gain calculation
+✔️ Coleman 2-stage furnace with ECM motor
+✔️ Coleman HMH7 cold-climate heat Pump
+✔️ Coleman cased aluminum indoor coil
+✔️ T10+ thermostat, ❌temperature sensor
+❌ Outdoor unit snow stand
+✔️ Electrical connection
+❌ Surge protection for furnace
+❌ Surge protection disconnect for heat pump
+❌ Acid neutralizer for furnace condensate
+✔️ Drain connection
+✔️ Ductwork connection
+✔️ Gas piping connection
+✔️ Refrigerant pipe connection
+✔️ Refrigerant filter-drier
+✔️ Pressure testing and evacuation
+✔️ Sealing and insulation of all wall penetrations
+✔️ Homeowner system training
+✔️ Comprehensive commissioning report
+✔️ Shipping
+✔️ Disposal and recycling
+
+System Specifications:
+🔹 AHRI: 211387205
+🔹 Brand: Coleman
+🔹 Outdoor model number: HMH72B341
+🔹 Indoor model number(s): XAFB36DBCN1
+🔹 Furnace model (if applicable): TM9Y060B12MP11
+🔹 HSPF2: 8.50
+🔹 SEER2: 16.50
+
+Additional Details:
+◼️ Energy Savings Plan Code: *
+◼️ Original system fuel: *
+◼️ New system fuel: Dual fuel
+◼️ System configuration: Centrally ducted
+◼️ Supplemental or backup heating: Natural gas furnace
+◼️ Electrical permit: *
+◼️ Gas appliance & piping permit: *
+◼️ Electrical service upgrade: *
+◼️ Electrical feed to outdoor unit: *",$12688.09,$8608.59,true,Each,211387205,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Central Heat Pump,Fujitsu,"",olit_a86f138fb0f9453588ab20799fba2f44,Fujitsu Ducted Heat Pump - AOUH30LUAH1 + AMUG30LMAS,"✔️ 12-year parts warranty
+✔️ 1-year labour warranty
+✔️ Lifetime workmanship warranty
+✔️ Heat loss and heat gain calculation
+✔️ Fujitsu air handler
+✔️ Fujitsu XLTH cold-climate heat Pump
+✔️ Outdoor unit snow stand
+✔️ Electrical connection
+✔️ Surge-protection disconnect for heat pump
+✔️ Drain connection
+✔️ Ductwork connection
+✔️ Refrigerant pipe connection
+✔️ Pressure testing and evacuation
+✔️ Sealing and insulation of all wall penetrations
+✔️ Homeowner system training
+✔️ Commissioning report
+✔️ Shipping
+✔️ Disposal and recycling
+
+System Specifications:
+◻️ AHRI: 207657376
+◻️ Brand: Fujitsu
+◻️ Outdoor model number: AOUH30LUAH1
+◻️ Indoor model number(s): AMUG30LMAS
+◻️ Tonnage: 2.5
+◻️ HSPF2: 9.70
+◻️ SEER2: 18.80
+
+Additional Details:
+◼️ Energy Savings Plan Code: *
+◼️ Original system fuel: *
+◼️ New system fuel: Electric heat pump
+◼️ System configuration: Centrally ducted to the entire home
+◼️ Supplemental or backup heating: *
+◼️ Electrical permit: *
+◼️ Gas appliance & piping permit: *
+◼️ Electrical service upgrade: *
+◼️ Electrical feed to outdoor unit: *",$15849.06,$11585.06,true,Each,207657376,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Central Heat Pump,Line sets,"",olit_6e3baf9215144993b74012cdac46c775,"5/8"" + 3/8"" refrigerant pipe and connecting wire","✔️ 5/8"" UV-rated and insulated refrigerant pipe
+✔️ 3/8"" UV-rated and insulated refrigerant pipe
+✔️ Connecting wire
+✔️ Hanging straps
+✔️ Wall thimble",$736.93,$531.93,true,Per 50 ft,5838LINE8LVT2SHLD50,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Central Heat Pump,Line sets,"",olit_c5cb3c18ad814d05b8f2f5dc66a6a9e5,Flush of exsiting line set,"✔️ RX11-Flush kit
+✔️ Nitrogen purging",$324.41,$201.41,true,Each,FLUSH,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Central Heat Pump,Mounting,"",olit_bd428f172e944ee4b8ecd253865b9565,"24"" x 48"" concrete slabs","✔️ Two concrete slabs 24"" x 24"" 
+✔️ Base rock",$205.62,$123.62,true,Each,2448WOODFRAME,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Central Heat Pump,Mounting,"",olit_470c0cade2bb42139886b177d68f9c0c,"36"" x 48"" concrete slabs","✔️ Three concrete slabs 16"" x 32""
+✔️ Base rock",$243.69,$161.69,true,Each,3648WOODFRAME,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Central Heat Pump,Mounting,"",olit_73393b68f33b4ba3a37243bc2e797e87,"24"" x 48"" Wood framed concrete slabs","✔️ Pressure treated wood 4"" x 4""
+✔️ Two concrete slabs 24"" x 24"" 
+✔️ Base rock",$374.20,$210.20,true,Each,2448WOODFRAME,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Central Heat Pump,Mounting,"",olit_c86000384da94ac197a6088952fb1a0c,"36"" x 48"" Wood framed concrete slabs","✔️ Pressure treated wood 4"" x 4""
+✔️ Three concrete slabs 16"" x 32""
+✔️ Base rock",$387.67,$223.67,true,Each,3648WOODFRAME,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Central Heat Pump,Fujitsu,"",olit_4efcd82a51564f0a9b3e85d681caf77c,Fujitsu Ducted Heat Pump - AOUH30LUAS1 + AMUG30LMAS,"✔️ 12-year parts warranty
+✔️ 1-year labour warranty
+✔️ Lifetime workmanship warranty
+✔️ Heat loss and heat gain calculation
+✔️ Fujitsu air handler
+✔️ Fujitsu XLTH cold-climate heat Pump
+✔️ Outdoor unit snow stand
+✔️ Electrical connection
+✔️ Surge-protection disconnect for heat pump
+✔️ Drain connection
+✔️ Ductwork connection
+✔️ Refrigerant pipe connection
+✔️ Pressure testing and evacuation
+✔️ Sealing and insulation of all wall penetrations
+✔️ Homeowner system training
+✔️ Commissioning report
+✔️ Shipping
+✔️ Disposal and recycling
+
+System Specifications:
+◻️ AHRI: 211078838
+◻️ Brand: Fujitsu
+◻️ Outdoor model number: AOUH30LUAS1
+◻️ Indoor model number(s): AMUG30LMAS
+◻️ Tonnage: 2.5
+◻️ HSPF2: 9.50
+◻️ SEER2: 18.50
+
+Additional Details:
+◼️ Energy Savings Plan Code: *
+◼️ Original system fuel: *
+◼️ New system fuel: Electric heat pump
+◼️ System configuration: Centrally ducted to the entire home
+◼️ Supplemental or backup heating: *
+◼️ Electrical permit: *
+◼️ Gas appliance & piping permit: *
+◼️ Electrical service upgrade: *
+◼️ Electrical feed to outdoor unit: *",$14422.02,$10158.02,true,Each,211078838,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Dual Fuel,Line sets,"",olit_b5f781790b8e4fbf98a687feaeb9bd73,Refrigerant pipes & connecting wire,"✔️ 5/8"" UV-rated and insulated refrigerant pipe
+✔️ 3/8"" UV-rated and insulated refrigerant pipe
+✔️ Low-voltage communication wire
+✔️ Hanging straps
+✔️ Wall thimble",$736.93,$531.93,true,Per 50 ft,5838LINE8LVT50,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Dual Fuel,Line sets,"",olit_3bb5b85c309f4706a55c2850dc2cde21,Refrigerant pipes & connecting wire,"✔️ 3/4"" UV-rated and insulated refrigerant pipe
+✔️ 3/8"" UV-rated and insulated refrigerant pipe
+✔️ Low-voltage communication wire
+✔️ Hanging straps
+✔️ Wall thimble",$768.72,$563.72,true,Per 50 ft,3438LINE8LVT2SHLD50,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Central Heat Pump,Moovair,"",olit_20586298e92b413ba47808b572eabd86,Moovair ducted heat pump -  DMA30HOS20230E7 + FMA30HIAHUU230X7,"✔️ 10-year parts warranty
+✔️ 1-year labour warranty
+✔️ Lifetime workmanship warranty
+✔️ Heat loss and heat gain calculation
+✔️ Moovair Central-Moov air handler
+✔️ Moovair Central-Moov cold-climate heat Pump
+✔️ Outdoor unit snow stand
+✔️ Electrical connection
+✔️ Surge protector for air handler
+✔️ Surge-protection disconnect for heat pump
+✔️ Drain connection
+✔️ Ductwork connection
+✔️ Refrigerant pipe connection
+✔️ Pressure testing and evacuation
+✔️ Sealing and insulation of all wall penetrations
+✔️ Homeowner system training
+✔️ Commissioning report
+✔️ Shipping
+✔️ Disposal and recycling
+
+System Specifications:
+◻️ AHRI: 207706560
+◻️ Brand: Moovair
+◻️ Outdoor model number: DMA30HOS20230E7
+◻️ Indoor model number(s): FMA30HIAHUU230X7
+◻️ Tonnage: 2.5
+◻️ HSPF2: 8.90
+◻️ SEER2: 16.20
+
+Additional Details:
+◼️ Energy Savings Plan Code: *
+◼️ Original system fuel: *
+◼️ New system fuel: Electric heat pump
+◼️ System configuration: Centrally ducted to the entire home
+◼️ Supplemental or backup heating: *
+◼️ Electrical permit: *
+◼️ Gas appliance & piping permit: *
+◼️ Electrical service upgrade: *
+◼️ Electrical feed to outdoor unit: *",$11780.42,$7516.42,true,Each,211078838,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Dual Fuel,Flue,"",olit_1fc121297eac49ec81c6dbb8b9ee36a6,Side wall vent kit,"✔️ Side wall flue termination kit, 2""",$187.53,$105.53,true,Each,CONCENTRICINSTALL,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Dual Fuel,Flue,"",olit_3df70bba8a6b4f7081afc1a06772d5ac,636 two-pipe flue venting,"✔️ (2) IPEX 636 flue gas vent pipe, 2"" x 10'
+✔️ (2) IPEX 636 deep socket coupling, 2""
+✔️ Steel strapping for hanging",$234.89,$152.89,true,Per 10 feet,FLUEVENT,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Dual Fuel,Line set cover,"",olit_486d8e2fb89443169a7526c802874c4a,Ivory line set covering,"✔️ 7.5 ft Length of ivory line set cover
+✔️ Ivory coupling",$163.42,$122.42,true,Per 7.5 ft,IVORYLINEKIT,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Central Heat Pump,Line set cover,"",olit_c3b051d3d5f04c6094db7660002c5b7f,White line set covering kit,"✔️ 7.5 ft Length of white line set cover
+✔️ Elbow
+✔️ Termination
+✔️ Inlet",$295.74,$172.74,true,Each,LINEKITWHITE,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Central Heat Pump,Line set cover,"",olit_f5dffb1f6598478aba43a2f26e552e5a,Ivory line set covering kit,"✔️ 7.5 ft Length of ivory line set cover
+✔️ Elbow
+✔️ Termination
+✔️ Inlet",$295.42,$172.42,true,Each,IVORYLINEKIT,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Central Heat Pump,Line set cover,"",olit_251407953f4b484ba278002f372ad24f,Ivory line set covering,"✔️ 7.5 ft Length of ivory line set cover
+✔️ Ivory coupling",$163.42,$122.42,true,Per 7.5 ft,IVORYLINEKIT,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Central Heat Pump,Removal & Replacement,"",olit_0f6e0120031d4720b147c0a23c25808f,Remove existing outdoor unit,"✔️ Refrigerant recovery
+✔️ Piping and electrical disconnection
+✔️ Recycling of the old outdoor unit",$264.00,$100.00,true,Each,OUTDOORREMOVE,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Central Heat Pump,Removal & Replacement,"",olit_c39c9c6d01f446f68dc4711ba22f9338,Disconnect replacement,✔️ Removal of existing disconnect and installation of new,$263.73,$202.23,true,"",DISCREPLACEMENT,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Central Heat Pump,Condensate,"",olit_f07401af42a1421787a155561a02b8b3,Condensate pump (low-profile),"✔️ Low-profile condensate pump
+✔️ Vinyl drain tubing
+✔️ Plug installation
+✔️ Drain termination
+",$417.96,$253.96,true,Each,LPCONDENSATEPUMP,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Central Heat Pump,Condensate,"",olit_8054f2bb485d44d78faa77bfba6bc04a,Condensate pump,"✔️ Condensate pump
+✔️ Vinyl drain tubing
+✔️ Plug installation
+✔️ Drain termination
+",$391.81,$227.81,true,Each,CONDENSATEPUMP,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Central Heat Pump,Filtration,"",olit_5a1fc365070b4989bf758f329731434f,MERV 11 platform filter cabinet,"✔️ Filter platform (Air handler 32"" wide)
+✔️ Spare 5"" wide MERV 11 air filter",$428.59,$305.59,true,Each,PPEAFB2843M8,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Central Heat Pump,Filtration,"",olit_32d5e6321a72432eb75db6c5167b58ff,MERV 11 filter platform,"✔️ Filter platform (Air handler 40"" wide)
+✔️ Spare 5"" wide MERV 11 air filter",$453.74,$330.74,true,Each,PPEAFB2832M8,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Central Heat Pump,Filtration,"",olit_2615ba6729f04437993b593332f7deba,MERV 11 filter downflow,"✔️ Filter box
+✔️ Custom fitting
+✔️ Spare 5"" wide MERV 11 air filter",$486.03,$322.03,true,Each,DFFILTERBOX,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Central Heat Pump,Electrical,"",olit_569495c0ae794f3698ab9512eabc054b,Outdoor unit electrical feed,"✔️ Wire from breaker panel to outdoor unit
+✔️ Electrical permit
+✔️ Breaker",$1252.00,$1170.00,true,Each,"",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Central Heat Pump,Electrical,"",olit_d0787811611345a1a784d896d35fda26,Outdoor unit and supplemental heat electrical feed,"✔️ Wire from breaker panel to outdoor unit
+✔️ Wire from breaker panel to air handler
+✔️ Electrical permit
+✔️ (2) Breaker",$1752.00,$1670.00,true,Each,"",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Central Heat Pump,Moovair,"",olit_5661b94ec4684f9084b085b74695f178,Supplemental electric heaters,✔️ Moovair 5 kW auxillary heater,$325.67,$243.67,true,"",MOOVAIR5KW,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Central Heat Pump,Fujitsu,"",olit_3d159c12610e4371a952191eccbec5b1,Supplemental electric heaters,✔️ Fujitsu 5 kW heater,$325.67,$243.67,true,"",FUJITSU5KW,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Central Heat Pump,Line sets,"",olit_76c3459a8630413f988e697297ff7d4c,"3/4"" + 3/8"" refrigerant pipe and connecting wire","✔️ 3/4"" UV-rated and insulated refrigerant pipe
+✔️ 3/8"" UV-rated and insulated refrigerant pipe
+✔️ Connecting wire
+✔️ Hanging straps
+✔️ Wall thimble",$768.72,$563.72,true,Per 50 ft,5838LINE8LVT2SHLD50,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Dual Fuel,Electrical,"",olit_8b3e6b6040464640bbd91761812f9b17,Electrical panel replacement,"✔️ Replace existing panels with new
+✔️ Electrical permit",$3500.00,$3500.00,true,Each,PANELREPLACE,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Ventilation,"","",olit_bab0a69286ad4c3798a60adf0eeee176,Soffit vent exhaust fan termination,"✔️ 6"" Black soffit vent termination with damper
+✔️ 6"" Galv elbow",$167.60,$85.60,true,Each,SOFFITTERM,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Dual Fuel,Electrical,"",olit_d8d474c954ab46f29f1dda115fdf1cf0,Copy of Outdoor unit and supplemental heat electrical feed,"✔️ Wire from breaker panel to outdoor unit
+✔️ Wire from breaker panel to air handler
+✔️ Electrical permit
+✔️ (2) Breaker",$1752.00,$1670.00,true,Each,"",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Water Heater,Gas,"",olit_faeb745bd51b4527832b2cc161ab834c,2 PSIG gas regulator,"✔️ Oara R95 Regulator 3/4"" Pressure 2 PSI 7.00-11.00"" WC F/NG
+✔️ 1/2"" ball valve
+✔️ Drip pocket
+✔️ Coupling to 3/4""
+✔️ Pipe stays
+✔️ Connection to existing gas line
+",$254.63,$131.63,false,"",2PSIGREG,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Water Heater,Flue,"",olit_493a7fa21c2e4329bd6fcd061fa1a4a2,636 two-pipe flue venting,"✔️ (2) IPEX 636 flue gas vent pipe, 2"" x 10'
+✔️ (2) IPEX 636 deep socket coupling, 2""
+✔️ Steel strapping for hanging",$234.89,$152.89,true,Per 10 feet,FLUEVENT,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Water Heater,Flue,"",olit_074a417648f045288c2a5c151e66721a,Copy of Side wall vent kit,"✔️ Side wall flue termination kit, 2""",$187.53,$105.53,true,Each,CONCENTRICINSTALL,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Water Heater,Flue,"",olit_bc4ae02faf4c47ee9e3391540738ba48,Concentric flue termination through roof,"✔️ Concentric Vent Kit, 2"" x 16""
+✔️ Roof flashing
+✔️ Roof sealant
+",$549.85,$303.85,true,Each,CONCENTRICINSTALL,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Water Heater,Rinnai,"",olit_c75bec9f899144fe820bf36130891a35,Rinnai RX130IN Tankless,"✔️ Rinnai RX130IN water heater
+✔️ Combination and relief valve kit
+✔️ Acid neutralizer and condensate drain piping
+✔️ Relief valve fittings and pipe
+✔️ Water connection fittings and pipe
+✔️ White backing board
+✔️ 1 636 length, 6 fittings
+✔️ Gas piping drip pocket and union
+✔️ Hot water pipe insulation
+✔️ Gas appliance permit
+
+System Specifications:
+🔹 Brand: Rinnai
+🔹 Model: RX130I
+
+Additional Details:
+◼️ Electrical permit: *
+◼️ Gas appliance & piping permit: *
+",$4005.99,$3021.96,true,Each,RX130IN,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Water Heater,Rinnai,"",olit_570fc69f5b4243e3b96423d95a13f136,Rinnai RX160IN Tankless,"✔️ Rinnai RX160IN water heater
+✔️ Combination and relief valve kit
+✔️ Acid neutralizer and condensate drain piping
+✔️ Relief valve fittings and pipe
+✔️ Water connection fittings and pipe
+✔️ White backing board
+✔️ 1 636 length, 6 fittings
+✔️ Gas piping drip pocket and union
+✔️ Hot water pipe insulation
+✔️ Gas appliance permit
+
+System Specifications:
+🔹 Brand: Rinnai
+🔹 Model: RX160I
+
+Additional Details:
+◼️ Electrical permit: *
+◼️ Gas appliance & piping permit: *
+",$4144.58,$3160.55,true,Each,RX160IN,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Water Heater,Rinnai,"",olit_f92f61cea4014165bd18a9d9aa0c7579,Rinnai RX199IN Tankless,"✔️ Rinnai RX199IN water heater
+✔️ Combination and relief valve kit
+✔️ Acid neutralizer and condensate drain piping
+✔️ Relief valve fittings and pipe
+✔️ Water connection fittings and pipe
+✔️ White backing board
+✔️ 1 636 length, 6 fittings
+✔️ Gas piping drip pocket and union
+✔️ Hot water pipe insulation
+✔️ Gas appliance permit
+
+System Specifications:
+🔹 Brand: Rinnai
+🔹 Model: RX199I
+
+Additional Details:
+◼️ Electrical permit: *
+◼️ Gas appliance & piping permit: *
+",$4544.58,$3560.55,true,Each,RX199IN,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Water Heater,Flue,"",olit_9a0169c60c134249ac13fc8064186e37,Concentric flue termination through existing flashing,"✔️ Concentric Vent Kit, 2"" x 16""
+",$263.14,$181.14,true,Each,CONCENTRICINSTALL,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Multi Split,Fujitsu H Series,Outdoor,olit_7cd3d2c1e37e4b07a6c9285e8974d6ba,"Fujitsu H-Series XLTH Multi-Split 18,000 BTU - AOU18RLXFZH","System:
+◻️ AHRI: 8033584
+◻️ Brand: Fujitsu
+◻️ Outdoor model number: AOU18RLXFZH
+◻️ Indoor unit type: Ductless
+◻️ Tonnage: 1.5
+◻️ HSPF2: 9.60
+◻️ SEER2: 21.50
+
+Details:
+◼️ Energy Savings Plan Code: *
+◼️ Original system fuel: *
+◼️ System decommissioned and removed: *
+◼️ New system fuel: Electric heat pump
+◼️ System configuration: Centrally ducted to the entire home
+◼️ Supplemental or backup heating: *
+◼️ Electrical permit: *
+◼️ Gas appliance & piping permit: *
+◼️ Electrical service upgrade: *
+◼️ Electrical feed to outdoor unit: *
+
+Included:
+✔️ 12-year parts warranty
+✔️ 1-year labour warranty
+✔️ Lifetime workmanship warranty
+✔️ Heat loss and heat gain calculation
+✔️ Fujitsu XLTH cold-climate heat Pump
+✔️ Electrical connection
+✔️ Surge-protection disconnect for heat pump
+✔️ Refrigerant pipe connection
+✔️ Pressure testing and evacuation
+✔️ Sealing and insulation of all wall penetrations
+✔️ Homeowner system training
+✔️ Commissioning report
+✔️ Shipping
+✔️ Disposal and recycling",$8412.06,$5460.06,true,Each,8033584,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Multi Split,Fujitsu H Series,Indoor,olit_25af43e32e944902bfdc15b8d1ae62ed,"Wall mount indoor unit 7,000 BTU/h","✔️ ASUH07LPAS wall mount indoor unit
+✔️ Liquid tight conduit and fittings
+✔️ Drain tubing
+✔️ Additional refrigerant
+✔️ Wall sleeve
+✔️ Remote control
+
+Optional Add-ons:
+◻️ Wall controller
+◻️ WiFi module",$1478.44,$1068.44,true,Each,ASUH07LPAS,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Multi Split,Fujitsu H Series,Indoor,olit_35b367872ae9422fa724a3df0a747a3d,"Wall mount indoor unit 9,000 BTU/h","✔️ ASUH09LPAS wall mount indoor unit
+✔️ Liquid tight conduit and fittings
+✔️ Drain tubing
+✔️ Additional refrigerant
+✔️ Wall sleeve
+✔️ Remote control
+
+Optional Add-ons:
+◻️ Wall controller
+◻️ WiFi module",$1426.12,$1016.12,true,Each,ASUH09LPAS,false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Install,Multi Split,Fujitsu H Series,Indoor,olit_ac2c4b4c1869486d8103cc01a57eb979,"Wall mount indoor unit 12,000 BTU/h","✔️ ASUH09LPAS wall mount indoor unit
+✔️ Liquid tight conduit and fittings
+✔️ Drain tubing
+✔️ Additional refrigerant
+✔️ Wall sleeve
+✔️ Remote control
+
+Optional Add-ons:
+◻️ Wall controller
+◻️ WiFi module",$1477.96,$1067.96,true,Each,ASUH12LPAS,false

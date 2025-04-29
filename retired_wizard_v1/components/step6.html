@@ -1,0 +1,126 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><div>
+  <h4 class="text-md font-semibold mb-2">Step 6: Quote Generation</h4>
+  <label class="block mb-2">
+    <span class="text-gray-700 text-sm">Estimated Install Days</span>
+    <input type="number" x-model="editForm.estimatedInstallDays" class="mt-1 block w-full p-2 border border-gray-300 rounded-md text-sm" @input="autoSave">
+  </label>
+  <template x-if="editForm.estimatedInstallDays > 5">
+    <label class="block mb-2">
+      <span class="text-gray-700 text-sm">Extended Installation Factors (Select all that apply)</span>
+      <div class="mt-1">
+        <template x-for="option in formOptions.extendedInstallFactors" :key="option.value">
+          <label class="block">
+            <input type="checkbox" x-model="editForm.extendedInstallFactors" :value="option.value" class="mr-2" @input="autoSave">
+            <span class="text-sm" x-text="option.label"></span>
+          </label>
+        </template>
+      </div>
+    </label>
+    <template x-if="editForm.extendedInstallFactors.includes('other')">
+      <label class="block mb-2">
+        <span class="text-gray-700 text-sm">Other Installation Factor (Specify)</span>
+        <input type="text" x-model="editForm.otherExtendedInstallFactor" class="mt-1 block w-full p-2 border border-gray-300 rounded-md text-sm" @input="autoSave">
+      </label>
+    </template>
+  </template>
+  <label class="block mb-2">
+    <span class="text-gray-700 text-sm">Total Quote Amount ($)</span>
+    <input type="number" x-model="editForm.quoteAmount" class="mt-1 block w-full p-2 border border-gray-300 rounded-md text-sm" @input="autoSave">
+  </label>
+  <label class="block mb-2">
+    <span class="text-gray-700 text-sm">Status</span>
+    <select x-model="editForm.status" class="mt-1 block w-full p-2 border border-gray-300 rounded-md text-sm" @input="autoSave">
+      <option value="Estimate Needs To Be Completed">Estimate Needs To Be Completed</option>
+      <option value="Waitlist">Waitlist</option>
+      <option value="Unscheduled">Unscheduled</option>
+      <option value="Scheduled Estimate">Scheduled Estimate</option>
+      <option value="Completed Estimate">Completed Estimate</option>
+      <option value="Approved">Approved</option>
+      <option value="Completed HLHG">Completed HLHG</option>
+      <option value="Check equipment availability and system size">Check equipment availability and system size</option>
+      <option value="Collected deposit into Housecall Pro">Collected deposit into Housecall Pro</option>
+      <option value="Created New Job">Created New Job</option>
+      <option value="Sent supplier quote request with shipment dates">Sent supplier quote request with shipment dates</option>
+      <option value="Sent Sub-Contractor Job Details">Sent Sub-Contractor Job Details</option>
+      <option value="Attach pick-up items pdf to job, email technicians on job list">Attach pick-up items pdf to job, email technicians on job list</option>
+      <option value="Pushed Estimate line items and attachments Housecall Pro job from html">Pushed Estimate line items and attachments Housecall Pro job from html</option>
+      <option value="Customer PO attached to job">Customer PO attached to job</option>
+      <option value="Waiting on Materials">Waiting on Materials</option>
+      <option value="Material Stock Confirmed With Supplier">Material Stock Confirmed With Supplier</option>
+      <option value="Scheduled">Scheduled</option>
+      <option value="Ordered Materials to Ship">Ordered Materials to Ship</option>
+      <option value="Installation In Progress">Installation In Progress</option>
+      <option value="Completed">Completed</option>
+      <option value="Technician Checklist Completion Needed">Technician Checklist Completion Needed</option>
+      <option value="Invoice Sent">Invoice Sent</option>
+      <option value="On Hold">On Hold</option>
+      <option value="Invoice Paid">Invoice Paid</option>
+      <option value="Rebate Submitted">Rebate Submitted</option>
+      <option value="Rebate Processed">Rebate Processed</option>
+      <option value="Extended Warranty Registered">Extended Warranty Registered</option>
+      <option value="Receipt Email Sent">Receipt Email Sent</option>
+    </select>
+  </label>
+  <template x-if="editForm.status === 'Technician Checklist Completion Needed'">
+    <label class="block mb-2">
+      <span class="text-gray-700 text-sm">Technician Checklist Items (Select all that apply)</span>
+      <div class="mt-1">
+        <template x-for="option in formOptions.technicianChecklistItems" :key="option.value">
+          <label class="block">
+            <input type="checkbox" x-model="editForm.technicianChecklistItems" :value="option.value" class="mr-2" @input="autoSave">
+            <span class="text-sm" x-text="option.label"></span>
+          </label>
+        </template>
+      </div>
+    </label>
+    <template x-if="editForm.technicianChecklistItems.includes('other')">
+      <label class="block mb-2">
+        <span class="text-gray-700 text-sm">Other Checklist Item (Specify)</span>
+        <input type="text" x-model="editForm.otherChecklistItem" class="mt-1 block w-full p-2 border border-gray-300 rounded-md text-sm" @input="autoSave">
+      </label>
+    </template>
+  </template>
+  <div class="flex justify-between">
+    <button @click="previousStep" class="bg-gray-500 text-white p-2 rounded-md hover:bg-gray-600 text-sm">Previous</button>
+    <button @click="saveEstimate" class="bg-green-600 text-white p-2 rounded-md hover:bg-green-700 text-sm">Save</button>
+  </div>
+</div>
