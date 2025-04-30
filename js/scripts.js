@@ -2,7 +2,7 @@ async function loadFileData(filename) {
   try {
     const user = firebase.auth().currentUser;
     if (!user) throw new Error('User not authenticated');
-
+    
     const idToken = await user.getIdToken();
     const response = await fetch(`/api/proxy?file=${filename}`, {
       method: 'GET',
@@ -10,11 +10,11 @@ async function loadFileData(filename) {
         'Authorization': `Bearer ${idToken}`,
       },
     });
-
+    
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}: ${response.statusText}`);
     }
-
+    
     const csvText = await response.text();
     console.log(`Loaded ${filename}`);
     return csvText;
@@ -29,7 +29,7 @@ function estimateApp() {
     page: 'estimate',
     estimates: [],
     pricebook: [],
-    referenceSheet: [],
+    referenceSheet: [], // To store items from Firestore
     selectedEstimateId: '',
     showEditModal: false,
     editStep: 1,
@@ -129,7 +129,7 @@ function estimateApp() {
     },
 
     async init() {
-      await this.loadReferenceSheet();
+      await this.loadReferenceSheet(); // Load reference sheet from Firestore
       await this.loadPricebook();
       await this.loadEstimates();
     },
@@ -139,6 +139,7 @@ function estimateApp() {
         const db = firebase.firestore();
         const querySnapshot = await db.collection('reference_sheet').get();
         this.referenceSheet = querySnapshot.docs.map(doc => doc.data());
+        console.log('Loaded reference sheet from Firestore:', this.referenceSheet);
       } catch (error) {
         console.error('Error loading reference sheet:', error.message);
       }
@@ -183,6 +184,7 @@ function estimateApp() {
 
         const materialResults = Papa.parse(materialCsv, { header: true, skipEmptyLines: true });
         const materials = materialResults.data.map(item => {
+          // Use referenceSheet from Firestore instead of hardcoded orderItems
           const orderItem = this.referenceSheet.find(order => order.part_number === item.part_number);
           const vendor = orderItem ? orderItem.vendor : 'Master';
           return {
@@ -297,46 +299,6 @@ function estimateApp() {
 
     async submitOrder() {
       try {
-        const user = firebase.auth().currentUser;
-        if (!user) throw new Error('User not authenticated');
-
-        const idToken = await user.getIdToken();
-        const db = firebase.firestore();
-        
-        // Save the order to Firestore
-        const jobRef = db.collection('jobs').doc(this.order.jobNumber);
-        await jobRef.set({
-          jobNumber: this.order.jobNumber,
-          address: this.order.address,
-          installDates: this.order.installDates,
-          siteName: this.order.siteName,
-          sitePhone: this.order.sitePhone,
-          shippingDate: this.order.shippingDate,
-          deliveryDetails: this.order.deliveryDetails,
-          deliveryName: this.order.deliveryName,
-          deliveryPhone: this.order.deliveryPhone,
-          projectAccount: this.order.projectAccount,
-          createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-        });
-
-        // Save parts to subcollection
-        const batch = db.batch();
-        this.order.items.forEach((item, index) => {
-          const pricebookItem = this.pricebook.find(p => p.uuid === item.uuid);
-          if (pricebookItem && item.quantity > 0) {
-            const partRef = jobRef.collection('parts').doc(`part_${index}`);
-            batch.set(partRef, {
-              uuid: item.uuid,
-              quantity: item.quantity,
-              part_number: pricebookItem.part_number || pricebookItem.task_code || pricebookItem.uuid,
-              description: pricebookItem.name,
-              vendor: pricebookItem.vendor,
-            });
-          }
-        });
-        await batch.commit();
-
-        // Generate and send PDFs
         const itemsByVendor = {};
         this.order.items.forEach(item => {
           const pricebookItem = this.pricebook.find(p => p.uuid === item.uuid);
@@ -510,21 +472,19 @@ function estimateApp() {
 
     async autoSave() {
       try {
-        const db = firebase.firestore();
-        const jobRef = db.collection('jobs').doc(this.editForm.estimate_id);
-        
-        // Save consultation data as a subcollection
-        const batch = db.batch();
-        Object.keys(this.editForm).forEach(key => {
-          if (this.editForm[key] !== '' && this.editForm[key] !== null && this.editForm[key] !== undefined) {
-            const dataPointRef = jobRef.collection('consultation_data').doc(key);
-            batch.set(dataPointRef, {
-              key: key,
-              value: this.editForm[key]
-            });
-          }
+        const response = await fetch('https://hook.us2.make.com/dvzmo319g49moixmiv5daqb5jir1kihc', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            action: 'auto_save',
+            estimate_id: this.editForm.estimate_id,
+            customerId: this.editForm.customerId,
+            formData: this.editForm
+          })
         });
-        await batch.commit();
+        if (!response.ok) {
+          console.error('Failed to auto-save:', response.status);
+        }
       } catch (error) {
         console.error('Error auto-saving:', error.message);
       }
@@ -532,18 +492,22 @@ function estimateApp() {
 
     async loadSavedData(estimateId, customerId) {
       try {
-        const db = firebase.firestore();
-        const jobRef = db.collection('jobs').doc(estimateId);
-        const consultationDataSnapshot = await jobRef.collection('consultation_data').get();
-        
-        const savedData = {};
-        consultationDataSnapshot.forEach(doc => {
-          const data = doc.data();
-          savedData[data.key] = data.value;
+        const response = await fetch('https://hook.us2.make.com/dvzmo319g49moixmiv5daqb5jir1kihc', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            action: 'load_saved_data',
+            estimate_id: estimateId,
+            customerId: customerId
+          })
         });
-
-        this.editForm = { ...this.editForm, ...savedData };
-        this.calculateQuote();
+        if (response.ok) {
+          const savedData = await response.json();
+          if (savedData && savedData.formData) {
+            this.editForm = { ...this.editForm, ...savedData.formData };
+            this.calculateQuote();
+          }
+        }
       } catch (error) {
         console.error('Error loading saved data:', error.message);
       }
@@ -621,10 +585,23 @@ function estimateApp() {
 
     async saveEstimate() {
       try {
-        await this.autoSave();
-        this.showEditModal = false;
-        await this.loadEstimates();
-        alert('Estimate updated.');
+        const response = await fetch('https://hook.us2.make.com/dvzmo319g49moixmiv5daqb5jir1kihc', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            action: 'auto_save',
+            estimate_id: this.editForm.estimate_id,
+            customerId: this.editForm.customerId,
+            formData: this.editForm
+          })
+        });
+        if (response.ok) {
+          this.showEditModal = false;
+          await this.loadEstimates();
+          alert('Estimate updated.');
+        } else {
+          console.error('Failed to save estimate:', response.status);
+        }
       } catch (error) {
         console.error('Error saving estimate:', error.message);
       }
