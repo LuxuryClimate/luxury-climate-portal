@@ -5,11 +5,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
-    "node-fetch": "^3.3.2"
+    "@google-cloud/storage": "^7.16.0",
+    "firebase-admin": "^13.3.0",
+    "node-fetch": "^2.7.0"
   }
 }
