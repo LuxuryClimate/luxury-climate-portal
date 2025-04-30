@@ -1,43 +1,4 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -45,26 +6,23 @@
   <title>Luxury Climate HVAC Portal</title>
   <style>
     :root {
-      --primary-dark: #010B15;    /* Business primary color (dark blue) */
-      --primary-green: #028C00;   /* Business secondary color (green) */
-      --white: #FFFFFF;           /* White for backgrounds */
-      --light-gray: #E5E7EB;      /* Light gray for sections */
-      --gray: #D1D5DB;            /* Gray for borders and subtle elements */
+      --primary-dark: #010B15;
+      --primary-green: #028C00;
+      --white: #FFFFFF;
+      --light-gray: #E5E7EB;
+      --gray: #D1D5DB;
     }
-
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
     body {
       font-family: 'Roboto', sans-serif;
       background-color: var(--light-gray);
       color: var(--primary-dark);
       line-height: 1.6;
     }
-
     nav {
       background-color: var(--white);
       padding: 1rem;
@@ -78,29 +36,24 @@
       align-items: center;
       gap: 1rem;
     }
-
     .nav-logo {
       display: flex;
       align-items: center;
       gap: 0.5rem;
     }
-
     .nav-logo img {
       height: 40px;
     }
-
     .nav-logo span {
       font-size: 1.2rem;
       font-weight: 700;
       color: var(--primary-dark);
     }
-
     .nav-buttons {
       display: flex;
       gap: 0.5rem;
       flex-wrap: wrap;
     }
-
     .nav-buttons button {
       background-color: var(--primary-green);
       color: var(--white);
@@ -111,35 +64,29 @@
       font-size: 0.9rem;
       transition: background-color 0.3s ease;
     }
-
     .nav-buttons button:hover {
       background-color: #026800;
     }
-
     main {
       max-width: 1200px;
       margin: 0 auto;
       padding: 1rem;
     }
-
     h2 {
       font-size: 1.5rem;
       margin-bottom: 1rem;
       color: var(--primary-dark);
     }
-
     h3 {
       font-size: 1.25rem;
       margin-bottom: 1rem;
       color: var(--primary-dark);
     }
-
     h4 {
       font-size: 1.1rem;
       margin-bottom: 0.5rem;
       color: var(--primary-dark);
     }
-
     .section {
       background-color: var(--white);
       padding: 1.5rem;
@@ -147,14 +94,12 @@
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
       margin-bottom: 1rem;
     }
-
     label {
       display: block;
       margin-bottom: 0.5rem;
       font-weight: 500;
       color: var(--primary-dark);
     }
-
     input, select, textarea {
       width: 100%;
       padding: 0.5rem;
@@ -164,31 +109,26 @@
       margin-bottom: 1rem;
       transition: border-color 0.3s ease;
     }
-
     input:focus, select:focus, textarea:focus {
       border-color: var(--primary-green);
       outline: none;
     }
-
     table {
       width: 100%;
       border-collapse: collapse;
       background: var(--white);
       font-size: 0.9rem;
     }
-
     th, td {
       padding: 0.75rem;
       border: 1px solid var(--gray);
       text-align: left;
     }
-
     th {
       background: var(--light-gray);
       font-weight: 600;
       color: var(--primary-dark);
     }
-
     button {
       padding: 0.5rem 1rem;
       color: var(--white);
@@ -198,31 +138,24 @@
       font-size: 0.9rem;
       transition: background-color 0.3s ease;
     }
-
     .blue-btn {
       background: var(--primary-green);
     }
-
     .blue-btn:hover {
       background: #026800;
     }
-
     .red-btn {
       background: #EF4444;
     }
-
     .red-btn:hover {
       background: #DC2626;
     }
-
     .gray-btn {
       background: #6B7280;
     }
-
     .gray-btn:hover {
       background: #4B5563;
     }
-
     .modal {
       position: fixed;
       top: 0;
@@ -235,7 +168,6 @@
       align-items: center;
       z-index: 200;
     }
-
     .modal-content {
       background: var(--white);
       padding: 1.5rem;
@@ -245,14 +177,12 @@
       max-height: 80vh;
       overflow-y: auto;
     }
-
     .material-order {
       background: var(--white);
       padding: 1.5rem;
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     }
-
     .pricebook-item {
       display: flex;
       flex-wrap: wrap;
@@ -263,20 +193,16 @@
       border-radius: 5px;
       align-items: center;
     }
-
     .pricebook-item select {
       flex: 1;
       min-width: 200px;
     }
-
     .pricebook-item input {
       width: 60px;
     }
-
     .pricebook-item button {
       width: auto;
     }
-
     .image-upload-btn {
       display: inline-block;
       padding: 0.5rem 1rem;
@@ -286,23 +212,18 @@
       cursor: pointer;
       text-align: center;
     }
-
     .image-upload-btn:hover {
       background: #026800;
     }
-
     .image-preview {
       max-width: 100%;
       max-height: 200px;
       margin-top: 0.5rem;
       display: none;
     }
-
     .image-preview.show {
       display: block;
     }
-
-    /* Login Section */
     .login-section {
       max-width: 400px;
       margin: 2rem auto;
@@ -312,80 +233,63 @@
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       text-align: center;
     }
-
     .login-section h2 {
       margin-bottom: 1.5rem;
     }
-
     .login-section input {
       margin-bottom: 1rem;
       padding: 0.75rem;
       font-size: 1rem;
     }
-
     .login-section button {
       width: 100%;
       padding: 0.75rem;
       font-size: 1rem;
     }
-
     .error-message {
       color: #EF4444;
       margin-top: 0.5rem;
       font-size: 0.9rem;
     }
-
-    /* Mobile Responsiveness */
     @media (max-width: 768px) {
       nav {
         flex-direction: column;
         align-items: flex-start;
       }
-
       .nav-buttons {
         flex-direction: column;
         width: 100%;
       }
-
       .nav-buttons button {
         width: 100%;
         text-align: center;
       }
-
       main {
         padding: 0.5rem;
       }
-
       h2 {
         font-size: 1.25rem;
       }
-
       h3 {
         font-size: 1.1rem;
       }
-
       h4 {
         font-size: 1rem;
       }
-
       table {
         font-size: 0.8rem;
       }
-
       th, td {
         padding: 0.5rem;
       }
-
       .modal-content {
         width: 95%;
         padding: 1rem;
       }
-
       .pricebook-item {
         flex-direction: column;
         align-items: stretch;
       }
-
       .pricebook-item select,
       .pricebook-item input,
       .pricebook-item button {
@@ -394,7 +298,6 @@
     }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-  <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
@@ -405,25 +308,21 @@
   <script src="/js/scripts.js"></script>
 </head>
 <body x-data="{ page: 'estimate', user: null, email: '', password: '', error: '' }" x-init="initFirebase(); initNav();">
-  <!-- Firebase Initialization -->
   <script>
     function initFirebase() {
       const firebaseConfig = {
-        apiKey: "YOUR_FIREBASE_API_KEY",
-        authDomain: "YOUR_FIREBASE_AUTH_DOMAIN",
-        projectId: "YOUR_FIREBASE_PROJECT_ID",
-        storageBucket: "YOUR_FIREBASE_STORAGE_BUCKET",
-        messagingSenderId: "YOUR_FIREBASE_MESSAGING_SENDER_ID",
-        appId: "YOUR_FIREBASE_APP_ID"
+        apiKey: "AIzaSyBtTz6kIX5qmDaiegNGlpaR-5GvnqKxoSI",
+        authDomain: "luxury-climate-portal.firebaseapp.com",
+        projectId: "luxury-climate-portal",
+        storageBucket: "luxury-climate-portal.appspot.com",
+        messagingSenderId: "1044945827974",
+        appId: "1:1044945827974:web:3f046b63cc97422749f907"
       };
-
       firebase.initializeApp(firebaseConfig);
-
       firebase.auth().onAuthStateChanged((user) => {
         if (user) {
           $data.user = user;
           $data.error = '';
-          // Load the app data after login
           if (typeof estimateApp === 'function') {
             estimateApp().init();
           }
@@ -432,7 +331,6 @@
         }
       });
     }
-
     async function login() {
       try {
         await firebase.auth().signInWithEmailAndPassword($data.email, $data.password);
@@ -440,18 +338,14 @@
         $data.error = error.message;
       }
     }
-
     async function logout() {
       await firebase.auth().signOut();
       $data.email = '';
       $data.password = '';
       $data.error = '';
-      // Reset app state
       location.reload();
     }
   </script>
-
-  <!-- Navigation -->
   <div id="nav-placeholder"></div>
   <script>
     async function initNav() {
@@ -472,10 +366,7 @@
       `;
     }
   </script>
-
-  <!-- Main Content -->
   <main>
-    <!-- Login Section -->
     <template x-if="!user">
       <div class="login-section">
         <h2>Login to HVAC Portal</h2>
@@ -485,11 +376,8 @@
         <div x-if="error" class="error-message" x-text="error"></div>
       </div>
     </template>
-
-    <!-- Portal Content (only visible to authenticated users) -->
     <template x-if="user">
       <div x-data="estimateApp()" x-init="init()">
-        <!-- Estimate Manager Section -->
         <template x-if="page === 'estimate'">
           <div class="section">
             <h2>Estimate Manager</h2>
@@ -541,14 +429,11 @@
             </div>
           </div>
         </template>
-
-        <!-- Edit Estimate Modal -->
         <template x-if="showEditModal">
           <div class="modal">
             <div class="modal-content">
               <h3>Consultation: <span x-text="editForm.estimate_id"></span></h3>
               <div style="margin-bottom: 20px;">
-                <!-- Step 1: Homeowner Consultation -->
                 <template x-if="editStep === 1">
                   <div>
                     <h4 style="font-size: 1.2em; margin-bottom: 10px;">Step 1: Homeowner Consultation</h4>
@@ -657,8 +542,6 @@
                     </div>
                   </div>
                 </template>
-
-                <!-- Step 2: Mechanical Room -->
                 <template x-if="editStep === 2">
                   <div>
                     <h4 style="font-size: 1.2em; margin-bottom: 10px;">Step 2: Mechanical Room</h4>
@@ -718,8 +601,6 @@
                     </div>
                   </div>
                 </template>
-
-                <!-- Step 3: Rest of House -->
                 <template x-if="editStep === 3">
                   <div>
                     <h4 style="font-size: 1.2em; margin-bottom: 10px;">Step 3: Rest of House</h4>
@@ -780,8 +661,6 @@
                     </div>
                   </div>
                 </template>
-
-                <!-- Step 4: Attic -->
                 <template x-if="editStep === 4">
                   <div>
                     <h4 style="font-size: 1.2em; margin-bottom: 10px;">Step 4: Attic</h4>
@@ -805,8 +684,6 @@
                     </div>
                   </div>
                 </template>
-
-                <!-- Step 5: Outside -->
                 <template x-if="editStep === 5">
                   <div>
                     <h4 style="font-size: 1.2em; margin-bottom: 10px;">Step 5: Outside</h4>
@@ -827,8 +704,6 @@
                     </div>
                   </div>
                 </template>
-
-                <!-- Step 6: Quote Generation -->
                 <template x-if="editStep === 6">
                   <div>
                     <h4 style="font-size: 1.2em; margin-bottom: 10px;">Step 6: Quote Generation</h4>
@@ -872,8 +747,6 @@
             </div>
           </div>
         </template>
-
-        <!-- Material Order Generator Section -->
         <template x-if="page === 'orders'">
           <div class="material-order section">
             <h2>Material Order Generator</h2>
