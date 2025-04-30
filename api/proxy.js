@@ -1,11 +1,14 @@
 const fetch = require('node-fetch');
 const admin = require('firebase-admin');
-const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
-const { Storage } = require('@google-cloud/storage');
 
+// Replace escaped newlines with actual newlines
+const serviceAccountString = process.env.FIREBASE_SERVICE_ACCOUNT.replace(/\\n/g, '\n');
+const serviceAccount = JSON.parse(serviceAccountString);
+
+// Initialize Firebase Admin SDK
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  storageBucket: "YOUR_FIREBASE_STORAGE_BUCKET"
+  storageBucket: 'luxury-climate-portal.appspot.com'
 });
 
 const storage = admin.storage();
@@ -21,12 +24,12 @@ module.exports = async (req, res) => {
     const idToken = authHeader.split('Bearer ')[1];
     await admin.auth().verifyIdToken(idToken);
 
-    // Handle file requests
+    // Handle file requests (e.g., CSV from Storage)
     if (req.query.file) {
       const filename = req.query.file;
       const file = storage.bucket().file(filename);
       const [exists] = await file.exists();
-      
+
       if (!exists) {
         return res.status(404).json({ error: `File ${filename} not found` });
       }
@@ -40,7 +43,7 @@ module.exports = async (req, res) => {
     // Handle Housecall Pro API requests
     const { path, ...params } = req.query;
     const url = `https://api.housecallpro.com/v1/${path}?${new URLSearchParams(params).toString()}`;
-    const token = 'b1e2512541214c1980aa9fe442f5844a'; // Consider using environment variables
+    const token = 'b1e2512541214c1980aa9fe442f5844a';
 
     const response = await fetch(url, {
       method: req.method,
